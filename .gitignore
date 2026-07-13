@@ -1,0 +1,20 @@
+# Backend
+backend/node_modules/
+backend/.env
+backend/package-lock.json
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

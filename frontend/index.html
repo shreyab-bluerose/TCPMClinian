@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+/>
+
+<title>TCPM Clinical Interpreter</title>
+
+<link rel="stylesheet" href="./css/styles.css">
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+/>
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="logo-section">
+            <img
+                src="./assets/blue-rose-logo.png"
+                alt="Blue Rose"
+                class="sidebar-logo"
+            />
+
+            <div class="sublogo">
+                TCPM CLINICAL INTERPRETER
+            </div>
+        </div>
+
+        <div class="menu-title">WORKFLOW</div>
+
+        <nav>
+
+            <a id="navClinical" class="menu-item active">
+                <i class="fa-solid fa-user"></i>
+                Clinical Context
+            </a>
+
+            <a id="navPanel" class="menu-item">
+                <i class="fa-regular fa-file-lines"></i>
+                Panel Entry
+            </a>
+
+            <div class="menu-title results">
+                RESULTS
+            </div>
+
+            <a id="navOverview" class="menu-item">
+                <i class="fa-solid fa-table-cells"></i>
+                Overview
+
+            </a>
+
+            <a id="navCaseReview" class="menu-item">
+                <i class="fa-solid fa-file-medical"></i>
+                Case Review
+            </a>
+
+            <!-- <a class="menu-item">
+                <i class="fa-regular fa-file"></i>
+                Case Review
+
+            </a> -->
+
+            <a id="navRecommendations" class="menu-item">
+                <i class="fa-solid fa-star"></i>
+                Recommendations
+            </a>
+
+            <div class="menu-title results">
+                EXPORT
+            </div>
+
+            <a class="menu-item">
+                <i class="fa-solid fa-file"></i>
+                Patient Report
+
+                <!-- <small class="optional">
+                    Optional
+                </small> -->
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <!-- Main Content -->
+    <main class="content">
+
+        <!-- Header -->
+        <header class="topbar">
+
+            <div class="header-brand">
+                
+                <img
+                    src="./assets/blue-rose-logo.png"
+                    alt="Blue Rose"
+                    class="header-logo"
+                />
+
+                <div class="header-text">
+                    <div class="title">
+                        TCPM Clinical Interpreter
+                    </div>
+
+                    <div class="version">
+                        Trauma Care Progression Model · TAI-1.0
+                    </div>
+                </div>
+
+            </div>
+
+            <button class="license-btn">
+                Licensed Clinicians Only
+            </button>
+
+        </header>
+
+        <section id="clinical-context-page" class="page">
+
+            <h1>Clinical Context</h1>
+
+            <p class="subtitle">
+                Context modulates all TCPM staging rationale and treatment pacing guidance.
+            </p>
+
+            <div class="card">
+
+                <div class="grid">
+
+                    <div class="field">
+                        <label>PRIMARY PRESENTATION</label>
+
+                        <select id="presentation">
+                            <option selected>Select...</option>
+                            <option>Complex PTSD</option>
+                            <option>Single-incident trauma</option>
+                            <option>Developmental / childhood trauma</option>
+                            <option>Burnout / chronic stress</option>
+                            <option>Anxiety with trauma history</option>
+                            <option>Depression with trauma history</option>
+                            <option>First responder / occupational trauma</option>
+                            <option>Medical trauma</option>
+                            <option>Unspecified trauma presentation</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>TRAUMA HISTORY TYPE</label>
+
+                        <select id="traumaType">
+                            <option selected>Select...</option>
+                            <option>Single-incident</option>
+                            <option>Complex / repeated</option>
+                            <option>Developmental / childhood</option>
+                            <option>Developmental + adult complex</option>
+                            <option>Occupational / cumulative</option>
+                            <option>Unknown / not yet disclosed</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>TREATMENT STATUS</label>
+
+                        <select id="treatmentStatus">
+                            <option selected>Select...</option>
+                            <option>Not currently in treatment</option>
+                            <option>Newly presenting</option>
+                            <option>Early treatment (0-6 months)</option>
+                            <option>Treatment-stable (6-18 months)</option>
+                            <option>Long-term treatment (18+ months)</option>
+                            <option>Treatment-refractory</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>THERAPY MODALITY</label>
+
+                        <select id="therapyModality">
+                            <option selected>Select / N/A</option>
+                            <option>None</option>
+                            <option>Somatic Experiencing (SE)</option>
+                            <option>EMDR</option>
+                            <option>IFS</option>
+                            <option>CBT / TF-CBT</option>
+                            <option>MBSR / mindfulness-based</option>
+                            <option>Multiple modalities</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>KNOWN COMORBIDITIES</label>
+
+                        <select id="comorbidities">
+                            <option selected>None / not specified</option>
+                            <option>MDD co-occurring</option>
+                            <option>Anxiety disorder co-occurring</option>
+                            <option>MDD + Anxiety</option>
+                            <option>Autoimmune condition</option>
+                            <option>Chronic pain / fibromyalgia</option>
+                            <option>TBI history</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>SIGNAL-RELEVANT MEDICATIONS</label>
+
+                        <select id="medications">
+                            <option selected>None / not specified</option>
+                            <option>SSRI</option>
+                            <option>SNRI</option>
+                            <option>SSRI + Benzodiazepine</option>
+                            <option>Anti-inflammatory</option>
+                            <option>Mood stabilizer</option>
+                            <option>Multiple psychiatric medications</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="field full">
+                    <label>ADDITIONAL CLINICAL NOTES</label>
+
+                    <textarea
+                      id="notes"
+                      placeholder="ACE history, functional status, relevant life context..."
+                    ></textarea>
+                </div>
+
+                <button id="saveBtn" class="submit-btn">
+                    ✓ Confirm Context and Go to Panel Entry
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <section id="panel-entry-page" class="panel-page">
+
+            <div class="panel-header">
+
+                <div>
+                    <h1>Panel Entry</h1>
+
+                    <p class="subtitle">
+                        Upload PDF report or enter values manually.
+                    </p>
+                </div>
+
+                <button id="runInterpretationBtn" class="run-btn-top">
+                    <i class="fa-solid fa-play"></i>
+                    Run Interpretation
+                </button>
+
+            </div>
+
+            <div class="upload-zone">
+
+                <input
+                    type="file"
+                    id="pdfUpload"
+                    accept=".pdf"
+                    hidden
+                >
+
+                <div class="upload-content">
+
+                    <div class="upload-icon">📄</div>
+
+                    <h3>Upload TAI-1.0 PDF Report</h3>
+
+                    <p>Click to browse or drag and drop your PDF</p>
+
+                    <input
+                        type="file"
+                        id="pdfUpload"
+                        accept=".pdf"
+                        hidden
+                    >
+                    <button
+                        type="button"
+                        class="upload-btn"
+                        onclick="document.getElementById('pdfUpload').click()"
+                    >
+                        ► Click to upload PDF
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="demo-link">
+                <a href="#">
+                    or load Patient A demo data instead
+                </a>
+            </div>
+
+            <div class="table-wrapper">
+
+                <table class="marker-table">
+
+                    <thead>
+                        <tr>
+                            <th>CATEGORY</th>
+                            <th>MARKER</th>
+                            <th>NAME</th>
+                            <th>FOLD CHANGE</th>
+                            <th>REF</th>
+                            <th>STATUS</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <!-- Immune Activation -->
+
+                        <tr>
+                            <td><span class="tag immune">Immune Activation</span></td>
+                            <td><strong>MCP1</strong></td>
+                            <td>Monocyte Chemoattractant Protein-1</td>
+                            <td><input type="number" value="0" step="0.1" data-marker="MCP1" /></td>
+                            <td>0.0 to 1.4</td>
+                            <td class="status">Within range</td>
+                        </tr>
+
+                        <tr>
+                            <td><span class="tag immune">Immune Activation</span></td>
+                            <td><strong>CD163</strong></td>
+                            <td>CD163 Scavenger Receptor</td>
+                            <td><input type="number" value="0" step="0.1" data-marker="CD163" /></td>
+                            <td>0.0 to 1.4</td>
+                            <td class="status">Within range</td>
+                        </tr>
+
+                        <tr>
+                            <td><span class="tag immune">Immune Activation</span></td>
+                            <td><strong>IL8</strong></td>
+                            <td>Interleukin-8</td>
+                            <td><input type="number" value="0" step="0.1" data-marker="IL8" /></td>
+                            <td>0.0 to 1.4</td>
+                            <td class="status">Within range</td>
+                        </tr>
+
+                        <tr>
+                            <td><span class="tag immune">Immune Activation</span></td>
+                            <td><strong>IL17</strong></td>
+                            <td>Interleukin-17</td>
+                            <td><input type="number" value="0" step="0.1" data-marker="IL17" /></td>
+                            <td>0.0 to 1.4</td>
+                            <td class="status">Within range</td>
+                        </tr>
+
+                        <tr>
+                            <td><span class="tag immune">Immune Activation</span></td>
+                            <td><strong>IFNG</strong></td>
+                            <td>Interferon-gamma</td>
+                            <td><input type="number" value="0" step="0.1" data-marker="IFNG" /></td>
+                            <td>0.0 to 1.4</td>
+                            <td class="status">Within range</td>
+                        </tr>
+
+                        <tr>
+                            <td><span class="tag immune">Immune Activation</span></td>
+                            <td><strong>NLRP3</strong></td>
+                            <td>NLRP3 Inflammasome</td>
+                            <td><input type="number" value="0" step="0.1" data-marker="NLRP3" /></td>
+                            <td>0.0 to 1.4</td>
+                            <td class="status">Within range</td>
+                        </tr>
+
+                        <tr>
+                            <td><span class="tag immune">Immune Activation</span></td>
+                            <td><strong>CASP1</strong></td>
+                            <td>Caspase-1</td>
+                            <td><input type="number" value="0" step="0.1" data-marker="CASP1" /></td>
+                            <td>0.0 to 1.4</td>
+                            <td class="status">Within range</td>
+                        </tr>
+
+                        <tr>
+                            <td><span class="tag oxidative">Oxidative/Metabolic</span></td>
+                            <td><strong>HMOX1</strong></td>
+                            <td>Heme Oxygenase-1</td>
+                            <td><input type="number" value="0" step="0.1" data-marker="HMOX1" /></td>
+                            <td>0.0 to 1.4</td>
+                            <td class="status">Within range</td>
+                        </tr>
+
+                        <tr>
+                            <td><span class="tag oxidative">Oxidative/Metabolic</span></td>
+                            <td><strong>COX2</strong></td>
+                            <td>Cyclooxygenase-2</td>
+                            <td><input type="number" value="0" step="0.1" data-marker="COX2" /></td>
+                            <td>0.0 to 1.4</td>
+                            <td class="status">Within range</td>
+                        </tr>
+
+                        <tr>
+                            <td><span class="tag oxidative">Oxidative/Metabolic</span></td>
+                            <td><strong>NOS2</strong></td>
+                            <td>Inducible Nitric Oxide Synthase</td>
+                            <td><input type="number" value="0" step="0.1" data-marker="NOS2" /></td>
+                            <td>0.0 to 1.4</td>
+                            <td class="status">Within range</td>
+                        </tr>
+
+                        <tr>
+                            <td><span class="tag oxidative">Oxidative/Metabolic</span></td>
+                            <td><strong>CYCS</strong></td>
+                            <td>Cytochrome c</td>
+                            <td><input type="number" value="0" step="0.1" data-marker="CYCS" /></td>
+                            <td>0.0 to 1.4</td>
+                            <td class="status">Within range</td>
+                        </tr>
+
+                        <tr>
+                            <td><span class="tag oxidative">Oxidative/Metabolic</span></td>
+                            <td><strong>LDHA</strong></td>
+                            <td>Lactate Dehydrogenase A</td>
+                            <td><input type="number" value="0" step="0.1" data-marker="LDHA" /></td>
+                            <td>0.0 to 1.4</td>
+                            <td class="status">Within range</td>
+                        </tr>
+
+                        <tr>
+                            <td><span class="tag oxidative">Oxidative/Metabolic</span></td>
+                            <td><strong>LDHB</strong></td>
+                            <td>Lactate Dehydrogenase B</td>
+                            <td><input type="number" value="0" step="0.1" data-marker="LDHB" /></td>
+                            <td>0.0 to 1.4</td>
+                            <td class="status">Within range</td>
+                        </tr>
+
+
+
+
+                        </tr>
+
+
+
+                        <!-- Inflammatory -->
+
+                        <tr>
+                            <td><span class="tag inflammatory">Inflammatory</span></td>
+                            <td><strong>IL1B</strong></td>
+                            <td>Interleukin-1 beta</td>
+                            <td><input type="number" value="0" step="0.1" data-marker="IL1B" /></td>
+                            <td>0.0 to 1.4</td>
+                            <td class="status">Within range</td>
+                        </tr>
+
+                        <tr>
+                            <td><span class="tag inflammatory">Inflammatory</span></td>
+                            <td><strong>IL6</strong></td>
+                            <td>Interleukin-6</td>
+                            <td><input type="number" value="0" step="0.1" data-marker="IL6" /></td>
+                            <td>0.0 to 1.4</td>
+                            <td class="status">Within range</td>
+                        </tr>
+
+                        <tr>
+                            <td><span class="tag inflammatory">Inflammatory</span></td>
+                            <td><strong>IL10</strong></td>
+                            <td>Interleukin-10</td>
+                            <td><input type="number" value="0" step="0.1" data-marker="IL10" /></td>
+                            <td>0.0 to 1.4</td>
+                            <td class="status">Within range</td>
+                        </tr>
+
+                        <tr>
+                            <td><span class="tag inflammatory">Inflammatory</span></td>
+                            <td><strong>TNFA</strong></td>
+                            <td>Tumor Necrosis Factor Alpha</td>
+                            <td><input type="number" value="0" step="0.1" data-marker="TNFA" /></td>
+                            <td>0.0 to 1.4</td>
+                            <td class="status">Within range</td>
+                        </tr>
+
+                        <tr>
+                            <td><span class="tag inflammatory">Inflammatory</span></td>
+                            <td><strong>TGFB1</strong></td>
+                            <td>TGF Beta 1</td>
+                            <td><input type="number" value="0" step="0.1" data-marker="TGFB1" /></td>
+                            <td>0.0 to 1.4</td>
+                            <td class="status">Within range</td>
+                        </tr>
+
+                        <tr>
+                            <td><span class="tag inflammatory">Inflammatory</span></td>
+                            <td><strong>CRP</strong></td>
+                            <td>C-Reactive Protein</td>
+                            <td><input type="number" value="0" step="0.1" data-marker="CRP" /></td>
+                            <td>0.0 to 1.4</td>
+                            <td class="status">Within range</td>
+                        </tr>
+
+                        <tr>
+                            <td><span class="tag inflammatory">Inflammatory</span></td>
+                            <td><strong>COL1A1</strong></td>
+                            <td>Collagen Type I Alpha 1</td>
+                            <td><input type="number" value="0" step="0.1" data-marker="COL1A1" /></td>
+                            <td>0.0 to 1.4</td>
+                            <td class="status">Within range</td>
+                        </tr>
+
+                        <!-- <tr>
+                            <td><span class="tag oxidative">Oxidative/Metabolic</span></td>
+                            <td><strong>LDHB</strong></td>
+                            <td>Lactate Dehydrogenase B</td>
+                            <td><input type="number" value="0" step="0.1" data-marker="IL6"></td>
+                            <td>0-1.4</td>
+                            <td class="status">Within range</td>
+                        </tr> -->
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <div class="panel-actions">
+
+                <button type="button" class="run-btn">
+                    <i class="fa-solid fa-play"></i>
+                    Run TCPM Interpretation
+                </button>
+
+                <button type="button" class="back-btn" id="backBtn">
+                    ← Back
+                </button>
+
+                <a href="#" class="clear-link">
+                    Clear values
+                </a>
+
+            </div>
+
+        </section>
+        
+        <section id="overview-page" class="page" style="display:none;">
+
+            <div class="overview-header">
+
+                <div>
+                    <h1>Overview Dashboard</h1>
+                    <p class="subtitle">
+                        TCPM zone, signal summary, and clinical narrative.
+                    </p>
+                </div>
+
+                <div class="overview-actions">
+                    <button id="caseReviewBtn" class="outline-btn">
+                        Full Case Review
+                    </button>
+
+                    <button id="recommendationsBtn" class="primary-btn">
+                        Recommendations
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- Stage Card -->
+
+            <div class="stage-card orange">
+
+                <div class="stage-title" id="stageTitle"></div>
+
+                <div class="stage-subtitle" id="stageSubtitle"></div>
+
+                <div class="stage-question" id="stageQuestion"></div>
+
+            </div>
+
+            <!-- Badges -->
+
+            <div class="stage-badges">
+
+                <span class="badge primary" id="primaryBadge"></span>
+
+                <span class="badge secondary" id="secondaryBadge"></span>
+
+            </div>
+
+            <!-- Summary Cards -->
+
+            <div class="summary-grid">
+
+                <div class="summary-card">
+                    <div class="summary-label">RESERVOIR</div>
+                    <div class="summary-level" id="reservoirLevel"></div>
+                    <div id="reservoirScore"></div>
+                </div>
+
+                <div class="summary-card">
+                    <div class="summary-label">BARRIER</div>
+                    <div class="summary-level" id="barrierLevel"></div>
+                    <div id="barrierScore"></div>
+                </div>
+
+                <div class="summary-card">
+                    <div class="summary-label">CROSSING</div>
+                    <div class="summary-level" id="crossingLevel"></div>
+                    <div id="crossingScore"></div>
+                </div>
+
+                <div class="summary-card">
+                    <div class="summary-label">POSITION</div>
+                    <div class="summary-level" id="positionValue"></div>
+                    <div id="zoneValue"></div>
+                </div>
+
+            </div>
+
+            <!-- Pathway -->
+
+            <div class="alert-box danger" id="pathwayFlag"></div>
+
+            <div class="alert-box warning" id="regulatoryFlag"></div>
+
+            <!-- Signals -->
+
+            <div class="signals" id="signalChips"></div>
+
+            <!-- Narrative -->
+
+            <div class="narrative-box">
+
+                <h3>Clinical Narrative</h3>
+
+                <p id="narrative">
+                    <!-- This panel may be consistent with a Stage 3:
+                    BBB Stress & Neuroimmune Signaling pattern. -->
+                </p>
+
+            </div>
+
+        </section>    
+    
+        <section id="case-review-page" class="page" style="display:none;">
+
+            <div class="case-header">
+
+                <h1>TCPM Case Review</h1>
+
+                <p class="subtitle">
+                    Full six-section output - Three Buckets embedded
+                </p>
+
+            </div>
+
+            <!-- Section 1 -->
+
+            <div class="case-card">
+
+                <div class="case-card-title">
+                    <span class="case-number">1</span>
+                    Main Biological Signals
+                </div>
+
+                <div class="case-card-body">
+
+                    <p><strong>Most prominent signal clusters:</strong></p>
+
+                    <div id="crSignals" class="signals"></div>
+
+                    <p id="crSummary"></p>
+
+                </div>
+
+            </div>
+
+            <!-- Section 2 -->
+
+            <div class="case-card">
+
+                <div class="case-card-title">
+                    <span class="case-number">2</span>
+                    Most Relevant TCPM Stage(s) - With Rationale
+                </div>
+
+                <div class="case-card-body">
+
+                    <h3 id="crPrimaryStage"></h3>
+
+                    <p id="crPrimaryReason"></p>
+
+                    <h3 id="crSecondaryStage"></h3>
+
+                    <p id="crSecondaryReason"></p>
+
+                </div>
+
+            </div>
+
+            <div class="case-divider">
+                THREE BUCKETS STRUCTURE
+            </div>
+
+            <!-- Observed Findings -->
+
+            <div class="bucket-card observed">
+
+                <div class="bucket-title">
+                    1&nbsp;&nbsp;OBSERVED FINDINGS
+                </div>
+
+                <div id="crObserved" class="bucket-body"></div>
+
+            </div>
+
+            <!-- Interpretation -->
+
+            <div class="bucket-card interpretation">
+
+                <div class="bucket-title">
+                    2&nbsp;&nbsp;PLAUSIBLE INTERPRETATION
+                </div>
+
+                <div id="crInterpretation" class="bucket-body"></div>
+
+            </div>
+
+            <!-- Uncertainty -->
+
+            <div class="bucket-card uncertainty">
+
+                <div class="bucket-title">
+                    3&nbsp;&nbsp;CLINICAL UNCERTAINTY - ALWAYS EXPLICIT
+                </div>
+
+                <div id="crUncertainty" class="bucket-body"></div>
+
+            </div>
+
+        </section>
+
+        <section id="recommendations-page" class="page" style="display:none;">
+
+            <div class="case-header">
+
+                <h1>Integrated Clinical Recommendations</h1>
+
+                <p class="subtitle">
+                    Evidence-based recommendations generated from the TCPM interpretation.
+                </p>
+
+            </div>
+
+            <div class="alert-box info">
+                📋 Clinician-facing only. Not for patient distribution in this form.
+            </div>
+
+            <div id="recommendationList"></div>
+
+        </section>
+    
+    </main>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="./js/tcpm.js"></script>
+
+<script src="./js/case-review.js"></script>
+<script src="./js/recommendation-library.js"></script>
+<script src="./js/recommendations.js"></script>
+<script src="./js/app.js"></script>
+<script src="./js/panel-entry.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="./js/app.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.2.67/pdf.min.js"></script>
+<script src="./js/panel-entry.js"></script> -->
+
+</body>
+</html>
+<!-- style="display:none;" -->
