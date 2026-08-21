@@ -79,13 +79,9 @@
                 EXPORT
             </div>
 
-            <a class="menu-item">
+            <a id="patientReportBtn" class="menu-item">
                 <i class="fa-solid fa-file"></i>
                 Patient Report
-
-                <!-- <small class="optional">
-                    Optional
-                </small> -->
             </a>
 
         </nav>
@@ -543,22 +539,32 @@
                     Clear values
                 </a>
 
+
+                
             </div>
+
+    
 
         </section>
         
-        <section id="overview-page" class="page" style="display:none;">
+        <section id="overview-page" class="page">
+
+            <!-- Header -->
 
             <div class="overview-header">
 
                 <div>
+
                     <h1>Overview Dashboard</h1>
+
                     <p class="subtitle">
                         TCPM zone, signal summary, and clinical narrative.
                     </p>
+
                 </div>
 
                 <div class="overview-actions">
+
                     <button id="caseReviewBtn" class="outline-btn">
                         Full Case Review
                     </button>
@@ -566,88 +572,212 @@
                     <button id="recommendationsBtn" class="primary-btn">
                         Recommendations
                     </button>
+
                 </div>
 
             </div>
 
             <!-- Stage Card -->
 
-            <div class="stage-card orange">
+            <div class="stage-card">
 
-                <div class="stage-title" id="stageTitle"></div>
+                <div class="stage-header">
 
-                <div class="stage-subtitle" id="stageSubtitle"></div>
+                    <span id="stageDot" class="stage-dot "></span>
 
-                <div class="stage-question" id="stageQuestion"></div>
+                    <div>
+
+                        <div class="stage-title" id="stageTitle">
+                            <!-- Stage 3 - Orange Zone -->
+                        </div>
+
+                        <div class="stage-subtitle" id="stageSubtitle">
+                            <!-- Transitional / Neuroimmune Signaling -->
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="stage-question" id="stageQuestion">
+
+                    Does this patient need more regulation capacity before deeper
+                    processing is safe?
+
+                </div>
 
             </div>
 
-            <!-- Badges -->
+            <!-- Primary / Secondary -->
 
             <div class="stage-badges">
 
-                <span class="badge primary" id="primaryBadge"></span>
+                <span id="primaryBadge" class="badge primary">
+                    Primary: Stage 3 : BBB Stress & Neuroimmune Signaling
+                </span>
 
-                <span class="badge secondary" id="secondaryBadge"></span>
+                <span id="secondaryBadge" class="badge secondary">
+                    Secondary: Stage 5 : Symptom Reduction Zone
+                </span>
 
             </div>
 
-            <!-- Summary Cards -->
+            <!-- Signal Cards -->
 
-            <div class="summary-grid">
+            <div class="signal-grid">
 
-                <div class="summary-card">
-                    <div class="summary-label">RESERVOIR</div>
-                    <div class="summary-level" id="reservoirLevel"></div>
-                    <div id="reservoirScore"></div>
+                <div class="signal-card">
+
+                    <div class="signal-label">
+
+                        IMMUNE ACTIVATION
+
+                    </div>
+
+                    <div id="immuneLevel" class="signal-level">
+                        Moderate
+                    </div>
+
+                    <div id="immuneCount" class="signal-count">
+                        4/7 elevated
+                    </div>
+
+                    <div class="progress-track">
+                        <div id="immuneBar" class="progress-fill immune-fill"></div>
+                    </div>
+
                 </div>
 
-                <div class="summary-card">
-                    <div class="summary-label">BARRIER</div>
-                    <div class="summary-level" id="barrierLevel"></div>
-                    <div id="barrierScore"></div>
+                <div class="signal-card">
+
+                    <div class="signal-label">
+
+                        INFLAMMATORY
+
+                    </div>
+
+                    <div id="inflammatoryLevel" class="signal-level">
+                        Prominent
+                    </div>
+
+                    <div id="inflammatoryCount" class="signal-count">
+                        3/6 elevated
+                    </div>
+
+                    <div class="progress-track">
+                        <div id="inflammatoryBar" class="progress-fill inflammatory-fill"></div>
+                    </div>
+
                 </div>
 
-                <div class="summary-card">
-                    <div class="summary-label">CROSSING</div>
-                    <div class="summary-level" id="crossingLevel"></div>
-                    <div id="crossingScore"></div>
+                <div class="signal-card">
+
+                    <div class="signal-label">
+
+                        OXIDATIVE / METABOLIC
+
+                    </div>
+
+                    <div id="oxidativeLevel" class="signal-level">
+                        Mild
+                    </div>
+
+                    <div id="oxidativeCount" class="signal-count">
+                        3/6 elevated
+                    </div>
+
+                    <div class="progress-track">
+                        <div id="oxidativeBar" class="progress-fill oxidative-fill"></div>
+                    </div>
+
                 </div>
 
-                <div class="summary-card">
-                    <div class="summary-label">POSITION</div>
-                    <div class="summary-level" id="positionValue"></div>
-                    <div id="zoneValue"></div>
+                <div class="signal-card">
+
+                    <div class="signal-label">
+
+                        STRUCTURAL
+
+                    </div>
+
+                    <div id="structuralLevel" class="signal-level">
+                        Minimal
+                    </div>
+
+                    <div id="structuralCount" class="signal-count">
+                        0/1 elevated
+                    </div>
+
+                    <div class="progress-track">
+                        <div id="structuralBar" class="progress-fill structural-fill"></div>
+                    </div>
+
                 </div>
 
             </div>
 
             <!-- Pathway -->
 
-            <div class="alert-box danger" id="pathwayFlag"></div>
+            <div id="pathwayFlag" class="alert-box danger"></div>
 
-            <div class="alert-box warning" id="regulatoryFlag"></div>
+            <!-- IL10 -->
 
-            <!-- Signals -->
+            <div id="regulatoryFlag" class="alert-box warning"></div>
 
-            <div class="signals" id="signalChips"></div>
+            <!-- Dominant Signals -->
 
-            <!-- Narrative -->
+            <div class="signal-section">
 
-            <div class="narrative-box">
+                <div class="signal-divider">
 
-                <h3>Clinical Narrative</h3>
+                    <span>DOMINANT SIGNALS</span>
 
-                <p id="narrative">
-                    <!-- This panel may be consistent with a Stage 3:
-                    BBB Stress & Neuroimmune Signaling pattern. -->
+                </div>
+
+                <div id="signalChips" class="signal-chips"></div>
+
+            </div>
+
+            <!-- Clinical Narrative -->
+
+            <div class="narrative-card">
+
+                <div class="narrative-title">
+
+                    CLINICAL NARRATIVE
+
+                </div>
+
+                <p id="narrative"></p>
+
+            </div>
+
+            <!-- Disclaimer -->
+
+            <div class="disclaimer-card">
+
+                <div class="disclaimer-title">
+
+                    MANDATORY CLINICAL DISCLAIMER
+
+                </div>
+
+                <p>
+
+                    This interpretation is generated by a clinical decision-support
+                    tool and does not constitute a medical diagnosis, clinical
+                    assessment, or treatment recommendation. All findings should be
+                    interpreted by a licensed clinician. This tool does not diagnose
+                    disease, confirm trauma exposure, or replace psychiatric or
+                    medical evaluation.
+
                 </p>
 
             </div>
 
-        </section>    
+        </section>   
     
-        <section id="case-review-page" class="page" style="display:none;">
+        <section id="case-review-page" class="page" >
 
             <div class="case-header">
 
@@ -743,11 +873,87 @@
 
             </div>
 
+            <!-- Section 3 -->
+
+            <div class="case-card">
+
+                <div class="case-card-title">
+                    <span class="case-number">3</span>
+                    Biological Interpretation
+                </div>
+
+                <div class="case-card-body" id="crBiologicalInterpretation"> Biological interpretation goes here. </div>
+
+            </div>
+
+            <!-- Section 4 -->
+
+            <div class="case-card">
+
+                <div class="case-card-title">
+                    <span class="case-number">4</span>
+                    Stress and Trauma Context
+                </div>
+
+                <div class="case-card-body" id="crTraumaContext"></div>
+
+            </div>
+
+            <!-- Section 5 -->
+
+            <div class="case-card">
+
+                <div class="case-card-title">
+                    <span class="case-number">5</span>
+                    Supportive Clinical Considerations
+                </div>
+
+                <div class="case-card-body" id="crSupportiveCare"></div>
+
+            </div>
+
+            <!-- Section 6 -->
+
+            <div class="case-card">
+
+                <div class="case-card-title">
+                    <span class="case-number">6</span>
+                    Remaining Uncertainty
+                </div>
+
+                <div class="case-card-body" id="crRemainingUncertainty"></div>
+
+            </div>
+
+            <!-- Disclaimer -->
+
+            <div class="disclaimer-box">
+
+                <div class="disclaimer-title">
+                    MANDATORY CLINICAL DISCLAIMER
+                </div>
+
+                <div class="disclaimer-text">
+
+                    This interpretation is generated by a clinical decision-support tool
+                    and does not constitute a medical diagnosis, clinical assessment,
+                    or treatment recommendation.
+
+                    All findings should be interpreted by a licensed clinician.
+
+                    This tool does not diagnose disease, confirm trauma exposure,
+                    or replace psychiatric or medical evaluation.
+
+                </div>
+
+            </div>
+
+
         </section>
 
-        <section id="recommendations-page" class="page" style="display:none;">
+        <section id="recommendations-page" class="page">
 
-            <div class="case-header">
+            <div class="recommendations-header">
 
                 <h1>Integrated Clinical Recommendations</h1>
 
@@ -757,21 +963,179 @@
 
             </div>
 
-            <div class="alert-box info">
+            <div class="recommendation-note">
+
                 📋 Clinician-facing only. Not for patient distribution in this form.
+
             </div>
 
             <div id="recommendationList"></div>
 
+            <div class="disclaimer-box">
+
+                <div class="disclaimer-title">
+                    MANDATORY CLINICAL DISCLAIMER
+                </div>
+
+                <div class="disclaimer-text">
+
+                    This interpretation is generated by a clinical decision-support tool and
+                    does not constitute a medical diagnosis, clinical assessment or treatment
+                    recommendation.
+
+                    All findings should be interpreted by a licensed clinician.
+
+                    This tool does not diagnose disease, confirm trauma exposure or replace
+                    psychiatric or medical evaluation.
+
+                </div>
+
+            </div>
+
         </section>
-    
+
+        <section id="patient-report-page" class="page" >
+
+            <h1 class="patient-title">Patient Report</h1>
+
+            <p class="patient-subtitle">
+                Easy-to-understand explanation of your TCPM results.
+            </p>
+
+            <!-- Current Status -->
+
+            <div class="patient-card">
+
+                <div class="patient-card-header">
+
+                    <div class="patient-number">1</div>
+
+                    <h2>Your Current Status</h2>
+
+                </div>
+
+                <div class="patient-card-body">
+
+                    <h2 id="patientState">--</h2>
+
+                    <div id="patientZone" class="patient-zone">--</div>
+
+                    <p class="patient-status-description">
+
+                        Your current biological pattern based on the available laboratory findings.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- Interpretation -->
+
+            <div class="patient-card">
+
+                <div class="patient-card-header">
+
+                    <div class="patient-number">2</div>
+
+                    <h2>What This Means</h2>
+
+                </div>
+
+                <div class="patient-card-body">
+
+                    <div id="patientInterpretation">
+
+                        Your personalized interpretation will appear here after the TCPM analysis has been completed.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Questions -->
+
+            <div class="patient-card">
+
+                <div class="patient-card-header">
+
+                    <div class="patient-number">3</div>
+
+                    <h2>Ask Questions</h2>
+
+                </div>
+
+                <div class="patient-card-body">
+
+                    <div id="patientChat" class="patient-chat">
+
+                        <div class="chat-message assistant">
+
+                            <strong>Assistant</strong>
+
+                            <p>
+                                Hello! Ask me anything about your report.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="chat-input">
+
+                        <input
+                            id="patientQuestion"
+                            type="text"
+                            placeholder="Ask about your report...">
+
+                        <button id="sendPatientQuestion">
+
+                            Send
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Disclaimer -->
+
+            <div class="patient-card">
+
+                <div class="patient-card-header">
+
+                    <div class="patient-number">4</div>
+
+                    <h2>Important Information</h2>
+
+                </div>
+
+                <div class="patient-card-body">
+
+                    <p>
+
+                        This report is intended to help explain your laboratory findings.
+                        It is not a diagnosis and should always be discussed with your
+                        healthcare provider.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+        
     </main>
 
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script src="./js/tcpm.js"></script>
-
+<script src="./js/context.js"></script>
 <script src="./js/case-review.js"></script>
 <script src="./js/recommendation-library.js"></script>
 <script src="./js/recommendations.js"></script>

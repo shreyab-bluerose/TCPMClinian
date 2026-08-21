@@ -24,7 +24,8 @@ body {
   align-items: center;
   gap: 10px;
 
-  margin-left: -240px; /* move into sidebar area */
+  margin-left: -240px; 
+  /* move into sidebar area */
 }
 
 /* =========================
@@ -154,6 +155,7 @@ body {
 
 .content {
   flex: 1;
+   min-width: 0;
   display: flex;
   flex-direction: column;
 }
@@ -223,6 +225,7 @@ body {
 
 .page {
   padding: 26px 40px;
+  box-sizing: border-box;
 }
 
 .page h1 {
@@ -798,7 +801,531 @@ input[type="number"]{
   text-decoration: underline;
 }
 
+/* ===========================================================
+   OVERVIEW DASHBOARD
+=========================================================== */
+
 .overview-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    margin-bottom:28px;
+
+}
+
+.overview-header h1{
+
+    margin:0;
+
+    font-size:46px;
+
+    font-weight:700;
+
+    color:#18325c;
+
+}
+
+.overview-header .subtitle{
+
+    margin-top:8px;
+
+    font-size:20px;
+
+    color:#6d7891;
+
+}
+
+.overview-actions{
+
+    display:flex;
+
+    gap:12px;
+
+}
+
+.outline-btn{
+
+    padding:12px 22px;
+
+    border:2px solid #2f57b5;
+
+    border-radius:12px;
+
+    background:white;
+
+    color:#2f57b5;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+}
+
+.primary-btn{
+
+    padding:12px 22px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#2f57b5;
+
+    color:white;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+}
+
+/* ===========================================================
+   Stage Card
+=========================================================== */
+
+.stage-card{
+
+    background:#fffaf3;
+
+    border:2px solid #f2a24a;
+
+    border-radius:18px;
+
+    padding:24px 28px;
+
+    margin-bottom:18px;
+
+}
+
+.stage-header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+.stage-dot{
+
+    width:20px;
+
+    height:20px;
+
+    border-radius:50%;
+
+    flex-shrink:0;
+
+}
+
+.stage-dot.green{background:#34c759;}
+.stage-dot.yellow{background:#f4c430;}
+.stage-dot.orange{background:#ff7a1a;}
+.stage-dot.red{background:#ff3b30;}
+.stage-dot.purple{background:#8e44ff;}
+
+.stage-title{
+
+    font-size:42px;
+
+    font-weight:700;
+
+    color:#6c2d0c;
+
+}
+
+.stage-subtitle{
+
+    margin-top:6px;
+
+    font-size:22px;
+
+    color:#9a6846;
+
+    font-weight:600;
+
+}
+
+.stage-question{
+
+    margin-top:18px;
+
+    padding-top:16px;
+
+    border-top:1px solid #ecd7c2;
+
+    font-size:19px;
+
+    color:#a36c50;
+
+    font-style:italic;
+
+}
+
+/* ===========================================================
+   Stage Badges
+=========================================================== */
+
+.stage-badges{
+
+    display:flex;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+
+    margin-bottom:22px;
+
+}
+
+.badge{
+
+    padding:8px 16px;
+
+    border-radius:999px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+}
+
+.badge.primary{
+
+    background:#fff3e8;
+
+    border:1px solid #f2a24a;
+
+    color:#9b5112;
+
+}
+
+.badge.secondary{
+
+    background:#fffceb;
+
+    border:1px solid #e7c54d;
+
+    color:#7d5c12;
+
+}
+
+/* ===========================================================
+   Signal Cards
+=========================================================== */
+
+.signal-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:18px;
+
+    margin-bottom:22px;
+
+}
+
+.signal-card{
+
+    background:white;
+
+    border:1px solid #dfe7f4;
+
+    border-radius:16px;
+
+    padding:18px;
+
+}
+
+.signal-label{
+
+    font-size:13px;
+
+    font-weight:700;
+
+    letter-spacing:.06em;
+
+    color:#6f7889;
+
+}
+
+.signal-level{
+
+    margin-top:8px;
+
+    font-size:26px;
+
+    font-weight:700;
+
+    color:#18325c;
+
+}
+
+.signal-count{
+
+    margin-top:4px;
+
+    color:#8b94a5;
+
+    font-size:15px;
+
+}
+
+.progress-track{
+
+    margin-top:16px;
+
+    height:6px;
+
+    background:#edf2f8;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+}
+
+.progress-fill{
+
+    height:100%;
+
+    border-radius:999px;
+
+    width:0%;
+
+}
+
+.immune-fill{
+    background:#4285f4;
+}
+
+.inflammatory-fill{
+    background:#ff4d4f;
+}
+
+.oxidative-fill{
+    background:#9c4dff;
+}
+
+.structural-fill{
+    background:#4f6dff;
+}
+
+/* ===========================================================
+   Alerts
+=========================================================== */
+
+.alert-box{
+
+    border-radius:14px;
+
+    padding:18px 22px;
+
+    margin-bottom:16px;
+
+    font-size:17px;
+
+    line-height:1.7;
+
+}
+
+.alert-box.danger{
+
+    background:#fff6f6;
+
+    border:1px solid #ff9d9d;
+
+    color:#912f2f;
+
+}
+
+.alert-box.warning{
+
+    background:#fffdf2;
+
+    border:1px solid #f2cb52;
+
+    color:#8a6114;
+
+}
+
+/* ===========================================================
+   Dominant Signals
+=========================================================== */
+
+.signal-section{
+
+    background:white;
+
+    border:1px solid #dfe7f4;
+
+    border-radius:16px;
+
+    padding:18px 22px;
+
+    margin-bottom:22px;
+
+}
+
+.signal-divider{
+
+    display:flex;
+
+    align-items:center;
+
+    margin-bottom:18px;
+
+}
+
+.signal-divider::before,
+.signal-divider::after{
+
+    content:"";
+
+    flex:1;
+
+    height:1px;
+
+    background:#d9e1ec;
+
+}
+
+.signal-divider span{
+
+    margin:0 18px;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    letter-spacing:.1em;
+
+    color:#8d97aa;
+
+}
+
+.signal-chips{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+}
+
+.signal-chip{
+
+    padding:8px 16px;
+
+    border-radius:999px;
+
+    background:#f7f9fc;
+
+    border:1px solid #d5e1f2;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    color:#244f7f;
+
+}
+
+/* ===========================================================
+   Narrative
+=========================================================== */
+
+.narrative-card{
+
+    background:#f7fbff;
+
+    border:1px solid #bdd6ff;
+
+    border-left:6px solid #3b6fd8;
+
+    border-radius:14px;
+
+    padding:24px;
+
+    margin-bottom:24px;
+
+}
+
+.narrative-title{
+
+    font-size:14px;
+
+    font-weight:700;
+
+    letter-spacing:.08em;
+
+    color:#3b6fd8;
+
+    margin-bottom:16px;
+
+}
+
+.narrative-card p{
+
+    margin:0;
+
+    line-height:1.8;
+
+    font-size:18px;
+
+    color:#44566f;
+
+}
+
+/* ===========================================================
+   Disclaimer
+=========================================================== */
+
+.disclaimer-card{
+
+    background:white;
+
+    border-top:5px solid #2f57b5;
+
+    border-radius:0 0 16px 16px;
+
+    padding:24px;
+
+    margin-bottom:40px;
+
+}
+
+.disclaimer-title{
+
+    font-size:15px;
+
+    font-weight:700;
+
+    letter-spacing:.08em;
+
+    color:#1f2d4a;
+
+    margin-bottom:14px;
+
+}
+
+.disclaimer-card p{
+
+    margin:0;
+
+    color:#68758a;
+
+    line-height:1.8;
+
+}
+/* .overview-header{
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -937,21 +1464,26 @@ input[type="number"]{
     border-left:4px solid #3a6ee8;
     padding:24px;
     border-radius:12px;
-}
+} */
 
-.page,
+/* .page,
 .panel-page {
     display: none;
     width: 100%;
+} */
+.page {
+    width: 100%;
+    padding: 26px 40px;
+    box-sizing: border-box;
 }
 
 #clinical-context-page {
     display: block;
 }
-
+/* 
 #overview-page {
     display: none;
-}
+} */
 
 
 /* ===========================
@@ -987,8 +1519,8 @@ input[type="number"]{
     display:flex;
     align-items:center;
     gap:12px;
-    padding:18px 24px;
-    font-size:24px;
+    padding:16px 22px;
+    font-size:18px;
     font-weight:700;
     color:#17325c;
     background:linear-gradient(90deg,#eef5ff,#fff7fb);
@@ -1008,16 +1540,17 @@ input[type="number"]{
 }
 
 .case-card-body{
-    padding:26px;
-    font-size:19px;
-    line-height:1.8;
-    color:#384860;
+    padding:22px;
+    font-size:16px;
+    line-height:1.6;
+    color:#475569;
 }
 
 .case-card-body h3{
-    margin:22px 0 10px;
-    color:#243754;
-    font-size:26px;
+    margin:0 0 10px;
+    font-size:22px;
+    font-weight:700;
+    color:#17325c;
 }
 
 .case-divider{
@@ -1047,9 +1580,10 @@ input[type="number"]{
 }
 
 .bucket-body{
-    padding:24px;
-    font-size:18px;
-    line-height:1.8;
+    padding:20px 22px;
+    font-size:16px;
+    line-height:1.65;
+    color:#475569;
 }
 
 .observed .bucket-title{
@@ -1079,17 +1613,14 @@ input[type="number"]{
 }
 
 .signal-chip{
-    padding:10px 18px;
-    border-radius:999px;
-    border:1px solid #bfd5ff;
-    background:#f7fbff;
-    color:#17325c;
+    padding:8px 14px;
+    font-size:14px;
     font-weight:600;
 }
 
 /* Recommendations */
 
-.recommendation-card{
+/* .recommendation-card{
     background:#fff;
     border:1px solid #d9e3f0;
     border-radius:16px;
@@ -1124,4 +1655,729 @@ input[type="number"]{
     color:#7b8794;
     font-size:15px;
     margin-bottom:14px;
+} */
+.recommendation-note{
+
+    background:#edf6ff;
+
+    border:1px solid #9ec8ff;
+
+    border-radius:12px;
+
+    padding:16px 18px;
+
+    margin-bottom:22px;
+
+    color:#1f3556;
+
 }
+
+.recommendation-card{
+
+    background:white;
+
+    border:1px solid #dbe5f3;
+
+    border-radius:16px;
+
+    padding:18px 20px;
+
+    margin-bottom:18px;
+
+    box-shadow:0 2px 6px rgba(0,0,0,.03);
+
+}
+
+.recommendation-top{
+
+    display:flex;
+
+    gap:16px;
+
+}
+
+.recommendation-number{
+
+    width:36px;
+
+    height:36px;
+
+    border-radius:50%;
+
+    background:#244fb7;
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-weight:700;
+
+    flex-shrink:0;
+
+}
+
+.recommendation-content{
+
+    flex:1;
+
+}
+
+.recommendation-title{
+
+    font-size:18px;
+
+    font-weight:700;
+
+    color:#17325c;
+
+    margin-bottom:8px;
+
+}
+
+.recommendation-tags{
+
+    display:flex;
+
+    gap:8px;
+
+    margin-bottom:10px;
+
+}
+
+.rec-category{
+
+    background:#eef5ff;
+
+    color:#3465e8;
+
+    border:1px solid #b8d1ff;
+
+    border-radius:999px;
+
+    padding:3px 10px;
+
+    font-size:12px;
+
+    font-weight:600;
+
+}
+
+.rec-strength{
+
+    background:#eef9ef;
+
+    color:#1d8b42;
+
+    border:1px solid #8dd39b;
+
+    border-radius:999px;
+
+    padding:3px 10px;
+
+    font-size:12px;
+
+    font-weight:600;
+
+}
+
+.recommendation-mechanism{
+
+    font-size:16px;
+
+    font-style:italic;
+
+    color:#475569;
+
+    margin-bottom:8px;
+
+}
+
+.recommendation-reference{
+
+    font-size:14px;
+
+    color:#8a94a6;
+
+    margin-bottom:10px;
+
+}
+
+.recommendation-flag{
+
+    background:#fff5f5;
+
+    border:1px solid #ff9d9d;
+
+    color:#a02b2b;
+
+    border-radius:6px;
+
+    padding:8px 12px;
+
+    font-size:14px;
+
+}
+
+.stage-header{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.stage-dot{
+    width:20px;
+    height:20px;
+    border-radius:50%;
+    background:#ccc;          /* default so you can see it */
+    flex-shrink:0;
+    margin-top:8px;
+}
+
+.stage-dot.green{
+    background:#2fb344;
+}
+
+.stage-dot.yellow{
+    background:#f4b400;
+}
+
+.stage-dot.orange{
+    background:#ff7a1a;
+}
+
+.stage-dot.red{
+    background:#dc2626;
+}
+
+.stage-dot.purple{
+    background:#8b5cf6;
+}
+
+
+.progress-track{
+    width:100%;
+    height:8px;
+    background:#edf2f8;
+    border-radius:10px;
+    margin-top:12px;
+    overflow:hidden;
+}
+
+.progress-fill{
+    height:100%;
+    width:0%;
+    border-radius:10px;
+    transition:width .4s ease;
+}
+
+.reservoir-fill{
+    background:#3b82f6;
+}
+
+.barrier-fill{
+    background:#ef4444;
+}
+
+.crossing-fill{
+    background:#a855f7;
+}
+
+
+/* ===========================
+   Mandatory Clinical Disclaimer
+   =========================== */
+
+.disclaimer-box{
+
+    margin-top:30px;
+
+    background:#ffffff;
+
+    border:1px solid #d7e2f4;
+
+    border-top:5px solid #3b6edc;
+
+    border-radius:18px;
+
+    padding:24px 28px;
+
+    box-shadow:0 1px 2px rgba(0,0,0,.05);
+
+}
+
+.disclaimer-title{
+
+    font-size:20px;
+
+    font-weight:800;
+
+    letter-spacing:.08em;
+
+    text-transform:uppercase;
+
+    color:#243a63;
+
+    margin-bottom:14px;
+
+}
+
+.disclaimer-text{
+
+    color:#56657d;
+
+    font-size:12px;
+
+    line-height:1.3;
+
+}
+
+/* ===========================
+   Clinical Narrative
+   =========================== */
+
+.narrative-box{
+
+    margin-top:28px;
+
+    background:#ffffff;
+
+    border:1px solid #c9dcff;
+
+    border-left:6px solid #3b6edc;
+
+    border-radius:18px;
+
+    padding:24px 28px;
+
+}
+
+.narrative-box h3{
+
+    margin:0 0 18px 0;
+
+    font-size:22px;
+
+    font-weight:700;
+
+    color:#1d3d73;
+
+}
+
+.narrative-box p{
+
+    margin:0 0 18px 0;
+
+    color:#4b5d77;
+
+    font-size:17px;
+
+    line-height:1.3;
+
+}
+
+.narrative-box p:last-child{
+
+    margin-bottom:0;
+
+}
+
+.narrative-box strong{
+
+    color:#173a72;
+
+    font-weight:700;
+
+}
+
+
+
+
+
+/* ===========================================
+   PATIENT REPORT
+=========================================== */
+
+#patient-report-page{
+
+    max-width:1100px;
+
+    margin:40px auto;
+
+    padding:0 24px;
+
+}
+
+/* ===========================
+   Header
+=========================== */
+
+.patient-title{
+
+    margin:0 0 8px;
+
+    font-size:40px;
+
+    font-weight:700;
+
+    color:#17325c;
+
+}
+
+.patient-subtitle{
+
+    margin:0 0 32px;
+
+    font-size:17px;
+
+    color:#66768d;
+
+}
+
+/* ===========================
+   Cards
+=========================== */
+
+.patient-card{
+
+    background:#fff;
+
+    border:1px solid #dbe5f3;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    box-shadow:0 2px 10px rgba(0,0,0,.05);
+
+    margin-bottom:32px;
+
+}
+
+.patient-card:last-child{
+
+    margin-bottom:0;
+
+}
+
+/* ===========================
+   Card Header
+=========================== */
+
+.patient-card-header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    padding:22px 28px;
+
+    background:#fafcff;
+
+    border-bottom:1px solid #e8eef7;
+
+}
+
+.patient-number{
+
+    width:38px;
+
+    height:38px;
+
+    border-radius:50%;
+
+    background:#2f66ba;
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-weight:700;
+
+    flex-shrink:0;
+
+}
+
+.patient-card-header h2{
+
+    margin:0;
+
+    font-size:24px;
+
+    color:#17325c;
+
+}
+
+/* ===========================
+   Card Body
+=========================== */
+
+.patient-card-body{
+
+    padding:30px;
+
+}
+
+/* ===========================
+   Current Status
+=========================== */
+
+#patientState{
+
+    margin:0 0 14px;
+
+    font-size:38px;
+
+    font-weight:700;
+
+    color:#17325c;
+
+}
+
+.patient-zone{
+
+    display:inline-block;
+
+    margin-bottom:24px;
+
+    padding:8px 18px;
+
+    border-radius:999px;
+
+    background:#eef5ff;
+
+    border:1px solid #bfd5ff;
+
+    color:#2958b3;
+
+    font-weight:700;
+
+}
+
+.patient-status-description{
+
+    margin:0;
+
+    font-size:17px;
+
+    line-height:1.8;
+
+    color:#5b697b;
+
+}
+
+/* ===========================
+   Interpretation
+=========================== */
+
+#patientInterpretation{
+
+    border-left:5px solid #2f66ba;
+
+    padding-left:22px;
+
+    font-size:17px;
+
+    line-height:1.9;
+
+    color:#46576f;
+
+}
+
+/* ===========================
+   Chat
+=========================== */
+
+.patient-chat{
+
+    background:#f7f9fc;
+
+    border:1px solid #dfe7f2;
+
+    border-radius:16px;
+
+    padding:22px;
+
+    min-height:300px;
+
+    margin-bottom:22px;
+
+}
+
+.chat-message{
+
+    background:white;
+
+    border:1px solid #e6ebf4;
+
+    border-radius:12px;
+
+    padding:18px;
+
+    margin-bottom:16px;
+
+}
+
+.chat-message:last-child{
+
+    margin-bottom:0;
+
+}
+
+.chat-input{
+
+    display:flex;
+
+    gap:12px;
+
+}
+
+.chat-input input{
+
+    flex:1;
+
+    padding:14px 18px;
+
+    border:1px solid #ccd8ea;
+
+    border-radius:10px;
+
+    font-size:16px;
+
+}
+
+.chat-input input:focus{
+
+    outline:none;
+
+    border-color:#3566e8;
+
+}
+
+.chat-input button{
+
+    background:#2f66ba;
+
+    color:white;
+
+    border:none;
+
+    border-radius:10px;
+
+    padding:0 28px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+}
+
+.chat-input button:hover{
+
+    background:#234f95;
+
+}
+
+
+
+/* ===========================
+   CASE REVIEW
+=========================== */
+
+.case-header {
+    margin-bottom: 28px;
+}
+
+.case-header h1 {
+    font-size: 40px;
+    font-weight: 700;
+    color: #172b4d;
+    margin: 0 0 6px;
+}
+
+.case-header .subtitle {
+    color: #6b778c;
+    font-size: 17px;
+    margin: 0;
+}
+
+.case-card {
+    display: block;
+    width: 100%;
+    background: #fff;
+    border: 1px solid #d9e3f0;
+    border-radius: 16px;
+    margin-bottom: 24px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,.04);
+}
+
+.case-card-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 22px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #17325c;
+    background: linear-gradient(90deg,#eef5ff,#fff7fb);
+    border-bottom: 1px solid #e7edf7;
+}
+
+.case-number {
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+    border-radius: 50%;
+    background: #2d4fb5;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.case-card-body {
+    padding: 22px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #475569;
+}
+
+/* .case-review-active {
+    padding: 32px 40px 50px !important;
+    box-sizing: border-box;
+}
+
+.case-review-active .case-card {
+    width: 100% !important;
+    display: block !important;
+    background: #fff !important;
+    border: 1px solid #d9e3f0 !important;
+    border-radius: 16px !important;
+    margin-bottom: 24px !important;
+    overflow: hidden !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,.04) !important;
+}
+
+.case-review-active .case-card-title {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    padding: 16px 22px !important;
+    background: linear-gradient(90deg,#eef5ff,#fff7fb) !important;
+    border-bottom: 1px solid #e7edf7 !important;
+}
+
+.case-review-active .case-card-body {
+    padding: 22px !important;
+} */

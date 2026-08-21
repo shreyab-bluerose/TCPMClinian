@@ -1,131 +1,216 @@
-// ===========================================
-// Recommendations Engine
-// frontend/js/recommendations.js
-// ===========================================
+/* =========================================================
+   TCPM RECOMMENDATIONS ENGINE
+========================================================= */
 
-// function buildRecommendations(result) {
+function buildRecommendations(result, context = {}) {
 
-//     const recommendations = [];
+    if (!result) {
+        return [];
+    }
 
-//     if (result.state.includes("Stage 3")) {
+    const stages = [];
 
-//         recommendations.push({
-//             title: "Pacing of trauma processing work",
-//             category: "Neuroimmune",
-//             evidence: "Strong",
-//             mechanism:
-//                 "BBB stress and neuroimmune pathway activation indicates regulation capacity should precede processing depth.",
-//             reference:
-//                 "Bisson et al. (2007)",
-//             flag:
-//                 "Monitor post-session for cognitive fog, sensory overload, symptom escalation."
-//         });
+    const primaryStage = Number(
+        result.primaryStage ??
+        result.stage
+    );
 
-//         recommendations.push({
-//             title: "Vagal breathing - 5–6 breaths/min",
-//             category: "Neuroimmune",
-//             evidence: "Moderate",
-//             mechanism:
-//                 "Supports vagal tone and anti-inflammatory signalling.",
-//             reference:
-//                 "Thayer & Lane (2009)",
-//             flag: ""
-//         });
+    const secondaryStage = Number(
+        result.secondaryStage
+    );
 
-//         recommendations.push({
-//             title: "Omega-3 fatty acids (EPA/DHA)",
-//             category: "Inflammatory",
-//             evidence: "Strong",
-//             mechanism:
-//                 "Supports BBB integrity and reduces inflammatory signalling.",
-//             reference:
-//                 "Kayvani et al. (2022)",
-//             flag:
-//                 "Discuss with primary care or prescribing physician."
-//         });
+    if (Number.isFinite(primaryStage)) {
+        stages.push(primaryStage);
+    }
 
-//         recommendations.push({
-//             title: "Sleep prioritization",
-//             category: "Oxidative",
-//             evidence: "Strong",
-//             mechanism:
-//                 "Supports glymphatic clearance and recovery.",
-//             reference:
-//                 "Walker (2017)",
-//             flag: ""
-//         });
+    if (
+        Number.isFinite(secondaryStage) &&
+        secondaryStage !== primaryStage
+    ) {
+        stages.push(secondaryStage);
+    }
 
-//     }
 
-//     return recommendations;
+    const recommendations = [];
 
-// }
-console.log("recommendations.js loaded");
 
-function buildRecommendations(result) {
+    stages.forEach(stage => {
 
-    if (result.state.includes("Green"))
-        return recommendationLibrary["Stage 1"];
+        const list =
+            recommendationLibrary[`Stage ${stage}`] || [];
 
-    if (result.state.includes("Yellow"))
-        return recommendationLibrary["Stage 2"];
+        list.forEach(item => {
 
-    if (result.state.includes("Orange"))
-        return recommendationLibrary["Stage 3"];
+            recommendations.push({
+                ...item,
+                priorityStage: stage
+            });
 
-    if (result.state.includes("Red"))
-        return recommendationLibrary["Stage 4"];
+        });
 
-    if (result.state.includes("Reduction"))
-        return recommendationLibrary["Stage 5"];
+    });
 
-    return [];
+
+    /* Remove duplicates */
+
+    const seen = new Set();
+
+    const unique =
+        recommendations.filter(item => {
+
+            const key =
+                item.title.trim().toLowerCase();
+
+            if (seen.has(key)) {
+                return false;
+            }
+
+            seen.add(key);
+            return true;
+
+        });
+
+
+    /* Primary stage first */
+
+    unique.sort((a, b) => {
+
+        if (
+            a.priorityStage !==
+            b.priorityStage
+        ) {
+
+            return stages.indexOf(
+                a.priorityStage
+            ) -
+            stages.indexOf(
+                b.priorityStage
+            );
+
+        }
+
+        const strength = {
+            "Strong": 1,
+            "Moderate": 2,
+            "Clinical consideration": 3
+        };
+
+        return (
+            (strength[a.evidence] || 99) -
+            (strength[b.evidence] || 99)
+        );
+
+    });
+
+
+    return unique;
 }
 
-function renderRecommendations(list) {
+
+/* =========================================================
+   RENDER
+========================================================= */
+
+function renderRecommendations(
+    recommendations
+) {
 
     const container =
-        document.getElementById("recommendationList");
+        document.getElementById(
+            "recommendationList"
+        );
+
+    if (!container) {
+        console.error(
+            "recommendationList not found"
+        );
+        return;
+    }
+
 
     container.innerHTML = "";
 
-    list.forEach((item, index) => {
 
-        container.innerHTML += `
+    if (
+        !recommendations ||
+        recommendations.length === 0
+    ) {
 
-        <div class="recommendation-card">
-
-            <div class="recommendation-title">
-                <span class="case-number">${index + 1}</span>
-                ${item.title}
+        container.innerHTML = `
+            <div class="recommendation-empty">
+                No stage-specific clinical
+                considerations are available
+                for this TCPM result.
             </div>
-
-            <div class="recommendation-tags">
-
-                <span class="badge primary">
-                    ${item.category}
-                </span>
-
-                <span class="badge secondary">
-                    ${item.evidence}
-                </span>
-
-            </div>
-
-            <p>${item.mechanism}</p>
-
-            <small>${item.reference}</small>
-
-            ${
-                item.flag
-                ? `<div class="alert-box danger">${item.flag}</div>`
-                : ""
-            }
-
-        </div>
-
         `;
 
-    });
+        return;
+    }
+
+
+    recommendations.forEach(
+        (r, index) => {
+
+            container.innerHTML += `
+
+                <div class="recommendation-card">
+
+                    <div class="recommendation-top">
+
+                        <div class="recommendation-number">
+                            ${index + 1}
+                        </div>
+
+                        <div class="recommendation-content">
+
+                            <div class="recommendation-title">
+                                ${r.title}
+                            </div>
+
+                            <div class="recommendation-tags">
+
+                                <span class="rec-category">
+                                    ${r.category}
+                                </span>
+
+                                <span class="rec-strength">
+                                    ${r.evidence}
+                                </span>
+
+                            </div>
+
+                            <div class="recommendation-mechanism">
+                                ${r.mechanism}
+                            </div>
+
+                            <div class="recommendation-reference">
+                                ${r.reference}
+                                ${
+                                    r.pmid
+                                        ? ` · PMID: ${r.pmid}`
+                                        : ""
+                                }
+                            </div>
+
+                            ${
+                                r.flag
+                                    ? `
+                                    <div class="recommendation-flag">
+                                        ${r.flag}
+                                    </div>
+                                    `
+                                    : ""
+                            }
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            `;
+
+        }
+    );
 
 }
